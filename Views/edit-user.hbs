@@ -1,0 +1,50 @@
+{{!-- breadcrumb --}}
+<nav style="breadcrumb" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Edit User</li>
+    </ol>
+</nav>
+{{#each rows}}
+{{!-- form --}}
+<form class="row g-3 justify-content-evenly needs-validation" method="POST" action="/edituser/{{id}}" id="parent">
+    <div class="col-md-6">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInputFirstName" placeholder="first name"
+                name="first_name" value="{{first_name}}">
+            <label for="floatingInputFirstName">first name</label>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInputLastName" placeholder="last name" name="last_name"
+                value="{{last_name}}">
+            <label for="floatingInputLastName">last name</label>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInputEmail" placeholder="email@email.com" name="email"
+                value="{{email}}">
+            <label for="floatingInputEmail">Email</label>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInputPhone" placeholder="phone" name="phone"
+                value="{{phone}}">
+            <label for="floatingInputPhone">phone</label>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="form-floating mb-3">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingInputComment"
+                style="height: 100px;" name="comments">{{comments}}</textarea>
+            <label for="floatingInputComment">comment</label>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-outline-info col-12">submit</button>
+</form>
+{{/each}}
+
+<script src="/script.js"></script>

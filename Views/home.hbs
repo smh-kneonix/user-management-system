@@ -1,0 +1,130 @@
+<div id="parent">
+    <div class="mb-2">
+        <h3>Manage Users</h3>
+    </div>
+
+    <div class="d-flex justify-content-between flex-row mb-3">
+        {{!-- search bar --}}
+        <div>
+            <form class="input-group" method="POST" action="/" novalidate>
+                <input type="search" class="form-control" name="Search" aria-label="Search" placeholder="Search" />
+                <button type="submit" class="btn btn-outline-primary">
+                    search
+                </button>
+            </form>
+        </div>
+        {{!-- adduser button --}}
+        <div>
+            <!-- Button trigger modal -->
+            <a type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+ add
+                user</a>
+        </div>
+
+        <!-- Modal new user -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="add user" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">fill the user info</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form class="modal-body row g-3 needs-validation" method="post" action="/adduser">
+                        {{!-- form --}}
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInputFirstName"
+                                    placeholder="first name" name="first_name">
+                                <label for="floatingInputFirstName">first name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInputLastName"
+                                    placeholder="last name" name="last_name">
+                                <label for="floatingInputLastName">last name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInputEmail"
+                                    placeholder="email@email.com" name="email">
+                                <label for="floatingInputEmail">Email</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInputPhone" placeholder="phone"
+                                    name="phone">
+                                <label for="floatingInputPhone">phone</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating mb-3">
+                                <input style="height: 100px;" type="text" class="form-control" id="floatingInputComment"
+                                    placeholder="Comment" name="comment">
+                                <label for="floatingInputComment">comment</label>
+                            </div>
+                        </div>
+
+
+                        <div class="row justify-content-evenly">
+                            <button type="submit" class="btn btn-primary col-5" method="POST"
+                                action="/adduser">submit</button>
+                            <button type="button" class="btn btn-danger col-2" data-bs-dismiss="modal">close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    {{!-- user list --}}
+    <table class="table table-curved table-striped table-hover table-info shadow-sm">
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">#</th>
+                <th scope="col" class="text-center">First name</th>
+                <th scope="col" class="text-center">Last name</th>
+                <th scope="col" class="text-center">Email</th>
+                <th scope="col" class="text-center">Phone</th>
+                <th scope="col" class="text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {{#each rows}}
+
+            <tr>
+                <th scope="row " class="text-center">{{this.id}}</th>
+                <td class="text-center">{{this.first_name}}</td>
+                <td class="text-center">{{this.last_name}}</td>
+                <td class="text-center">{{this.email}}</td>
+                <td class="text-center">{{this.phone}}</td>
+                <td class="text-center">
+                    <div class="btn-group">
+                        <a href="/viewuser/{{this.id}}" type="button" class="btn btn-outline-dark btn-small"><i class="bi bi-eye"></i>
+                            View</a>
+                        <a href="/edituser/{{this.id}}" type="button" class="btn btn-outline-success btn-small"><i
+                                class="bi bi-pencil"></i>
+                            Edit</a>
+                        <a href="/deleteuser/{{this.id}}" type="button" class="btn btn-outline-danger btn-small"><i
+                                class="bi bi-person-x"></i>
+                            Delete</a>
+                    </div>
+                </td>
+            </tr>
+
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+
+
+
+<script src="/script.js"></script>
