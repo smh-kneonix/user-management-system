@@ -2,6 +2,8 @@
 
 The User Management System is a web application built with Node.js, Express, Bootstrap, HBS, and MySQL. It provides functionality to view user information, edit existing users, delete users, and add new users.
 
+![usermanagement](./readmePic/2.jpg)
+
 ## Technologies Used
 
 - **Backend**: [Node.js](https://nodejs.org/en) with [Express.js](https://www.npmjs.com/package/express) (Web application framework)
